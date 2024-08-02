@@ -2,7 +2,7 @@
 <statement> ::= "bro" <var_decl> | <expression> | <print_statement>
 <print_statement> ::== "yap" "(" (<literal> | <identifier>) ")" ;
 <var_decl> ::= <identifier> [<variable_modifier>] "be" <literal> ;
-<identifier> ::= a-ZA-Z_ [a-zA-Z_0-9]*
+<identifier> ::= [a-ZA-Z_] [a-zA-Z_0-9]*
 <variable_modifier> ::== "noCap" | "private"
 <expression> ::= <binary_op> | <identifier> | <literal> ;
 <binary_op> ::= <expression> <operator> <expression>
