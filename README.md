@@ -1,8 +1,12 @@
 # bussinScript
 A programming language based off of Gen z slang. Yes it is supposed to be this cringe.
 
+UPDATE 02.08.2024: A formal grammar in the EBNF standard is now available as a pdf document. Please note that this will very likely change as I begin to add more
+complex features like if statements and loops.
+
 UPDATE 01.08.2024: The lexer is now up and running, supporting basic arithmetic operations, 
 as well as variable assignments which get tokenized. 
+
 
 <u><b><h2>Basic Concept:</h2></b></u>
 
