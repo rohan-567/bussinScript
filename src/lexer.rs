@@ -1,4 +1,4 @@
-use std::arch::aarch64::vmin_u8;
+
 use std::fs;
 use std::cmp::PartialEq;
 
@@ -56,7 +56,7 @@ enum TokenType {
     // One or two character tokens.
     EQUAL, EQUAL_EQUAL,
     GREATER, GREATER_EQUAL,
-    LESS, LESS_EQUAL,
+    LESS, LESS_EQUAL,PRINT,
     // Literals.
     IDENTIFIER, STRING, NUMBER,
     LINE_START, VARIABLE_ASSIGNMENT, IMMUTABLE,
@@ -188,6 +188,9 @@ impl Scanner{
                          }
                          else if literal == ")" {
                              token_list.push(Token::new_token(TokenType::RIGHT_PAREN, literal, 1));
+                         }
+                         else if literal == "yap" {
+                             token_list.push(Token::new_token(TokenType::PRINT, literal, 1));
                          }
 
 
