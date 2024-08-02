@@ -44,6 +44,10 @@ pub fn run_file(path: &str) {
 
     println!("{:?}",result);
 
+    for h in tokens{
+        println!("{}",h.line)
+    }
+
 
 
 
@@ -123,6 +127,7 @@ impl Scanner{
         let mut token_list: Vec<Token> = Vec::new();
         let mut current_string = String::new();
         let mut in_string = false;
+        let mut line_counter:i32 = 1;
 
         while let Some(&c) = chars.peek() {
             if in_string {
@@ -131,7 +136,7 @@ impl Scanner{
                         // End of string
                         in_string = false;
                         chars.next();
-                        token_list.push(Token::new_token(TokenType::STRING, current_string.clone(), 1));
+                        token_list.push(Token::new_token(TokenType::STRING, current_string.clone(), line_counter));
                         current_string.clear();
                     }
                     _ => {
@@ -151,7 +156,8 @@ impl Scanner{
                         chars.next();
                     }
                     ';' => {
-                        token_list.push(Token::new_token(TokenType::SEMICOLON, c.to_string(), 1));
+                        token_list.push(Token::new_token(TokenType::SEMICOLON, c.to_string(), line_counter));
+                        line_counter+=1;
                         chars.next();
                     }
                     _ => {
@@ -166,39 +172,39 @@ impl Scanner{
                         }
 
                         if literal == "bro" {
-                            token_list.push(Token::new_token(TokenType::LINE_START, literal, 1));
+                            token_list.push(Token::new_token(TokenType::LINE_START, literal, line_counter));
                         } else if literal == "be" {
-                            token_list.push(Token::new_token(TokenType::VARIABLE_ASSIGNMENT, literal, 1));
+                            token_list.push(Token::new_token(TokenType::VARIABLE_ASSIGNMENT, literal, line_counter));
                         } else if literal == "noCap" {
-                            token_list.push(Token::new_token(TokenType::IMMUTABLE, literal, 1));
+                            token_list.push(Token::new_token(TokenType::IMMUTABLE, literal, line_counter));
                         } else if literal == "*" {
-                            token_list.push(Token::new_token(TokenType::STAR, literal, 1));
+                            token_list.push(Token::new_token(TokenType::STAR, literal, line_counter));
                         }
                          else if literal == "+" {
-                        token_list.push(Token::new_token(TokenType::PLUS, literal, 1));
+                        token_list.push(Token::new_token(TokenType::PLUS, literal, line_counter));
                         }
                          else if literal == "-" {
-                             token_list.push(Token::new_token(TokenType::MINUS, literal, 1));
+                             token_list.push(Token::new_token(TokenType::MINUS, literal, line_counter));
                          }
                          else if literal == "/" {
-                             token_list.push(Token::new_token(TokenType::SLASH, literal, 1));
+                             token_list.push(Token::new_token(TokenType::SLASH, literal, line_counter));
                          }
                          else if literal == "(" {
-                             token_list.push(Token::new_token(TokenType::LEFT_PAREN, literal, 1));
+                             token_list.push(Token::new_token(TokenType::LEFT_PAREN, literal, line_counter));
                          }
                          else if literal == ")" {
-                             token_list.push(Token::new_token(TokenType::RIGHT_PAREN, literal, 1));
+                             token_list.push(Token::new_token(TokenType::RIGHT_PAREN, literal, line_counter));
                          }
                          else if literal == "yap" {
-                             token_list.push(Token::new_token(TokenType::PRINT, literal, 1));
+                             token_list.push(Token::new_token(TokenType::PRINT, literal, line_counter));
                          }
 
 
 
                          else if literal.parse::<i32>().is_ok() {
-                            token_list.push(Token::new_token(TokenType::NUMBER, literal, 1));
+                            token_list.push(Token::new_token(TokenType::NUMBER, literal, line_counter));
                         } else {
-                            token_list.push(Token::new_token(TokenType::IDENTIFIER, literal, 1));
+                            token_list.push(Token::new_token(TokenType::IDENTIFIER, literal, line_counter));
                         }
                     }
                 }
