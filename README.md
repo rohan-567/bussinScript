@@ -1,8 +1,12 @@
 # bussinScript
 A programming language based off of Gen z slang. Yes it is supposed to be this cringe.
 
+UPDATE 02.08.2024: A formal grammar in the EBNF standard is now available as a pdf document. Please note that this will very likely change as I begin to add more
+complex features like if statements and loops. (also for some reason github doesn't render the pdf properly, I'll try to fix it sometime)
+
 UPDATE 01.08.2024: The lexer is now up and running, supporting basic arithmetic operations, 
 as well as variable assignments which get tokenized. 
+
 
 <u><b><h2>Basic Concept:</h2></b></u>
 
@@ -20,4 +24,12 @@ Variable are mutable by default. If immutability is desired, the "noCap" modifie
 ```
 bro y noCap be "Hello World";
 ```
+
+They can also be made private, which limits the scope in which they can be used. This is a premptive feature for when I add scoping. The keyword "private" is also 
+a placeholder until I come up with something more fitting. Regardless, here is an example:
+
+```
+bro z private be 12;
+```
+
 
