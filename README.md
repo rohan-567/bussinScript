@@ -25,3 +25,11 @@ Variable are mutable by default. If immutability is desired, the "noCap" modifie
 bro y noCap be "Hello World";
 ```
 
+They can also be made private, which limits the scope in which they can be used. This is a premptive feature for when I add scoping. The keyword "private" is also 
+a placeholder until I come up with something more fitting. Regardless, here is an example:
+
+```
+bro z private be 12;
+```
+
+
